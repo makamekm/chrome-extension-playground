@@ -33,18 +33,16 @@ const Panel = new Vue({
       if (this.selectedElement && this.$refs.items[this.selectedIndex]) {
         const elem = this.$refs.items[this.selectedIndex];
         const top = this.selectedElement.getBoundingClientRect().top;
-        // const height = elem.getBoundingClientRect().bottom;
-        // const diffBottomY = Math.floor(top + height - window.innerHeight + 5);
+        const height = elem.getBoundingClientRect().bottom;
+        const diffBottomY = Math.floor(top + height - window.innerHeight + 5);
         let diffY = top;
-        // if (diffBottomY > 0) {
-        //   diffY -= diffBottomY;
-        // }
-        // const diffTopY = Math.floor(top + diffY - 5);
-        // if (diffTopY < 0) {
-        //   diffY = -diffTopY;
-        // }
-        console.log(diffY);
-        
+        if (diffBottomY > 0) {
+          diffY -= diffBottomY;
+        }
+        const diffTopY = Math.floor(top + diffY - 5);
+        if (diffTopY < 0) {
+          diffY = -diffTopY;
+        }
         elem.style.transform = `translateY(${diffY}px)`;
       }
     },
