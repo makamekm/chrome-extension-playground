@@ -1,5 +1,7 @@
 const containerLeftVersion = document.createElement("div"); 
 document.body.appendChild(containerLeftVersion);
+let blockPanel;
+let unblockPanel;
 const applicationLeftVersion = new Vue({
   el: containerLeftVersion,
   mounted() {
@@ -7,8 +9,26 @@ const applicationLeftVersion = new Vue({
       this.toggleRJMenu(show);
     };
     document.addEventListener("mousemove", this.menuHoverWatcher);
+    blockPanel = ($el) => {
+      if (!this.blockedDict[$el]) {
+        this.blockedDict[$el] = true;
+        this.blocked++;
+      }
+    };
+    unblockPanel = ($el) => {
+      if (this.blockedDict[$el]) {
+        delete this.blockedDict[$el];
+        this.blocked--;
+      }
+    };
   },
   methods: {
+    getIndex(index, subIndex) {
+      return getIndex(index, subIndex);
+    },
+    onSelect(event, index) {
+      setSelectedPanel(event.currentTarget, index);
+    },
     toggleRJMenu() {
       this.near = !this.near;
       if (!this.near) {
@@ -32,12 +52,20 @@ const applicationLeftVersion = new Vue({
       }
     },
   },
+  watch: {
+    show(value) {
+      if (!value) {
+        setSelectedPanel(null, null);
+      }
+    },
+  },
   computed: {
     show() {
       return this.near || this.blocked;
     },
   },
   data: () => ({
+    items: getItems(),
     near: false,
     blocked: 0,
     blockedDict: {},
@@ -51,64 +79,18 @@ const applicationLeftVersion = new Vue({
           </div>
         </div>
         <div class="menu-scroll">
-          <div class="menu-group">
+          <div class="menu-group"
+            v-for="(topItem, index) in items"
+            :key="index">
             <div class="menu-head-item">
-              Item Click 1
+              {{topItem.label}}
             </div>
-            <div class="menu-item">
-              Item Click 1
+            <div class="menu-item"
+              v-for="(item, subIndex) in topItem.children"
+              @mouseover="onSelect($event, getIndex(index, subIndex))"
+              :key="subIndex">
+              {{item.label}}
             </div>
-            <div class="menu-item">
-              Item Click 2
-            </div>
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 5
-          </div>
-          <div class="menu-item">
-            Item Click 8
           </div>
         </div>
         <div class="menu-gap"></div>

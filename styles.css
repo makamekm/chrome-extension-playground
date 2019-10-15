@@ -118,7 +118,8 @@ body {
   overflow-x: hidden;
 }
 
-.menu-backdrop .menu-item:not(:last-child):after {
+.menu-backdrop .menu-item:not(:last-child):after,
+.menu-backdrop .menu-group:not(:last-child):after {
   content: '';
   position: absolute;
   left: calc(100% + 5px);
@@ -155,7 +156,8 @@ body {
   margin: 0;
 }
 
-.menu-backdrop.left .menu-item:not(:last-child):after {
+.menu-backdrop.left .menu-item:not(:last-child):after,
+.menu-group.left .menu-item:not(:last-child):after {
   bottom: unset;
   top: calc(100% + 3px);
   left: 5px;
@@ -166,13 +168,33 @@ body {
 
 
 .panel {
-  position: absolute;
+  position: fixed;
+  top: 0;
   left: 302px;
+  box-sizing: border-box;
   pointer-events: none;
   opacity: 0;
   z-index: 9999999;
-  transform: translateX(300px);
+  transform: translateX(50px);
   transition: opacity 0.3s, transform 0.3s;
+  user-select: none;
+  cursor: default;
+}
+
+.panel.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.panel-content {
+  position: absolute;
+  pointer-events: none;
+  box-sizing: border-box;
+  top: 0;
+  opacity: 0;
+  left: 50px;
+  transition: opacity 0.3s, left 0.3s;
   background-color: #fff;
   color: #333;
 	border-radius: 2px;
@@ -181,10 +203,10 @@ body {
   min-width: 300px;
 }
 
-.panel.active {
+.panel-content.active {
   pointer-events: all;
   opacity: 1;
-  transform: translateX(0);
+  left: 0;
 }
 
 
