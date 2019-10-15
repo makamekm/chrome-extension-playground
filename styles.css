@@ -33,7 +33,7 @@ body {
   pointer-events: all;
   flex: 1;
   color: #fff;
-  background-color: rgba(0, 100, 160);
+  background-color: rgb(18, 60, 109);
   height: 35px;
   display: flex;
   flex-direction: row;
@@ -157,24 +157,24 @@ body {
 
 .dropdown > .dropdown-offset {
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% + 2px);
   left: 0;
   pointer-events: none;
 }
 
 .dropdown-right > .dropdown-offset {
   top: 0;
-  left: calc(100% + 5px);
+  left: calc(100% + 2px);
 }
 
 .dropdown-left > .dropdown-offset {
   top: 0;
   left: unset;
-  right: calc(100% + 5px);
+  right: calc(100% + 2px);
 }
 
 .dropdown-bottom-left > .dropdown-offset {
-  top: calc(100% + 5px);
+  top: calc(100% + 2px);
   left: unset;
   right: 0;
 }
@@ -205,7 +205,7 @@ body {
   white-space: nowrap;
   cursor: pointer;
   font-size: 13px;
-  background-color: rgba(0, 100, 160, 0);
+  background-color: rgba(18, 60, 109, 0);
   transition: all 0.15s;
 }
 
@@ -224,11 +224,11 @@ body {
 }
 
 .dropdown > .dropdown-offset > .dropdown-content > .item:hover {
-  background-color: rgba(0, 100, 160, .15);
+  background-color: rgba(18, 60, 109, .15);
 }
 
 .dropdown > .dropdown-offset > .dropdown-content > .item:active, .dropdown > .dropdown-content > .item.active {
-  background-color: rgba(0, 100, 160, .9);
+  background-color: rgba(18, 60, 109, .9);
   color: #fff;
 }
 
