@@ -25,10 +25,10 @@ const Dropdown = Vue.component('dropdown', {
   },
   methods: {
     checkPosition() {
-      const top = this.$refs.content.getBoundingClientRect().top;
-      const bottom = this.$refs.content.getBoundingClientRect().bottom;
-      const left = this.$refs.content.getBoundingClientRect().left;
-      const right = this.$refs.content.getBoundingClientRect().right;
+      const top = this.$refs.offset.getBoundingClientRect().top;
+      const bottom = this.$refs.offset.getBoundingClientRect().bottom;
+      const left = this.$refs.offset.getBoundingClientRect().left;
+      const right = this.$refs.offset.getBoundingClientRect().right;
       const diffBottomY = Math.floor(bottom - window.innerHeight + 5);
       const diffRightX = Math.floor(right - window.innerWidth + 5);
       let diffX = 0;
@@ -53,9 +53,7 @@ const Dropdown = Vue.component('dropdown', {
       if (diffY !== 0) {
         this.diffY = diffY;
       }
-      this.$refs.content.style.transform = `translateX(${this.diffX}px) translateY(${this.diffY}px)`;
-      // this.$refs.content.style.top = `calc(100% + 5px + ${this.diffY}px)`;
-      // this.$refs.content.style.left = `calc(100% + 5px + ${this.diffX}px)`;
+      this.$refs.content.style.transform = `translateX(${diffX}px) translateY(${diffY}px)`;
     },
     onShowChild($el) {
       if ($el !== this.$el) {
@@ -100,8 +98,10 @@ const Dropdown = Vue.component('dropdown', {
   },
   template: `<div :class="{'dropdown': true, 'active': show}" @mouseover="checkPosition">
     <slot></slot>
-    <div class="dropdown-content" ref="content">
-      <slot name="content"></slot>
+    <div class="dropdown-offset" ref="offset">
+      <div class="dropdown-content" ref="content">
+        <slot name="content"></slot>
+      </div>
     </div>
   </div>`,
 })
