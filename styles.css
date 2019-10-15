@@ -165,6 +165,29 @@ body {
 }
 
 
+.panel {
+  position: absolute;
+  left: 302px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999999;
+  transform: translateX(300px);
+  transition: opacity 0.3s, transform 0.3s;
+  background-color: #fff;
+  color: #333;
+	border-radius: 2px;
+	display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.panel.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 
 .dropdown {
   position: relative;
