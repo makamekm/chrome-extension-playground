@@ -1,8 +1,6 @@
 const Dropdown = Vue.component('dropdown', {
   data: () => ({
     show: false,
-    diffX: 0,
-    diffY: 0,
   }),
   mounted() {
     this.$el.addEventListener("mouseenter", this.onEnter);
@@ -46,12 +44,6 @@ const Dropdown = Vue.component('dropdown', {
       }
       if (diffLeftX < 0) {
         diffX = -diffLeftX;
-      }
-      if (diffX !== 0) {
-        this.diffX = diffX;
-      }
-      if (diffY !== 0) {
-        this.diffY = diffY;
       }
       this.$refs.content.style.transform = `translateX(${diffX}px) translateY(${diffY}px)`;
     },
@@ -183,7 +175,7 @@ const topVersion = `<div :class="{'menu-backdrop': true, 'active': show}">
     <div class="menu-item">
       Item Click 2
     </div>
-    <div class="gap"></div>
+    <div class="menu-gap"></div>
     <div class="menu-item">
       Item Click 3
     </div>
@@ -229,8 +221,73 @@ const leftVersion = `<div :class="{'menu-backdrop left': true, 'active': show}">
         RJ Access Menu
       </div>
     </div>
+    <div class="menu-scroll">
+      <div class="menu-group">
+        <div class="menu-head-item">
+          Item Click 1
+        </div>
+        <div class="menu-item">
+          Item Click 1
+        </div>
+        <div class="menu-item">
+          Item Click 2
+        </div>
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 5
+      </div>
+      <div class="menu-item">
+        Item Click 8
+      </div>
+    </div>
+    <div class="menu-gap"></div>
+    <div class="menu-item">
+      Item Click 3
+    </div>
     <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-right">
-      Menu 1
+      Menu 3
       <template #content>
         <div class="item">
           Test 1
@@ -245,80 +302,6 @@ const leftVersion = `<div :class="{'menu-backdrop left': true, 'active': show}">
             </div>
             <div>
               >
-            </div>
-          </div>
-          <template #content>
-            <div class="item">
-              Test 1
-            </div>
-            <div class="item">
-              Test 2
-            </div>
-            <dropdown class="item dropdown-right">
-              <div class="row-left-right">
-                <div>
-                  Test Menu 2
-                </div>
-                <div>
-                  >
-                </div>
-              </div>
-              <template #content>
-                <div class="item">
-                  Test 1
-                </div>
-                <div class="item">
-                  Test 2
-                </div>
-                <div class="item">
-                  Test 3
-                </div>
-              </template>
-            </dropdown>
-          </template>
-        </dropdown>
-      </template>
-    </dropdown>
-    <dropdown @hide="onHideChild" @show="onShowChild"  class="menu-item dropdown-right">
-      Menu 2
-      <template #content>
-        <div class="item">
-          Test 1
-        </div>
-        <div class="item">
-          Test 2
-        </div>
-        <div class="item">
-          Test 3
-        </div>
-      </template>
-    </dropdown>
-    <div class="menu-item">
-      Item Click 1
-    </div>
-    <div class="menu-item">
-      Item Click 2
-    </div>
-    <div class="gap"></div>
-    <div class="menu-item">
-      Item Click 3
-    </div>
-    <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-right">
-      Menu 3
-      <template #content>
-        <div class="item">
-          Test 1
-        </div>
-        <div class="item">
-          Test 2
-        </div>
-        <dropdown class="item dropdown-left">
-          <div class="row-left-right">
-            <div>
-              <
-            </div>
-            <div>
-              Test Menu 1
             </div>
           </div>
           <template #content>
