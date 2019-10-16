@@ -17,7 +17,7 @@ const MenuItems = Vue.component('menu-items', {
             right = block.getBoundingClientRect().right;
           }
         }
-        this.$refs.container.style.width = `${Math.ceil(right - left + 4)}px`;  
+        this.$refs.container.style.minWidth = `${Math.ceil(right - left + 4)}px`;  
       }
     }
   },

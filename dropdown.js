@@ -1,7 +1,15 @@
 const Dropdown = Vue.component('dropdown', {
+  props: ['force'],
   data: () => ({
     show: false,
   }),
+  // watch: {
+  //   force(value) {
+  //     if (value === true) {
+
+  //     }
+  //   },
+  // },
   mounted() {
     this.$el.addEventListener("mouseenter", this.onEnter);
     this.$el.addEventListener("mouseleave", this.onLeave);
@@ -88,7 +96,7 @@ const Dropdown = Vue.component('dropdown', {
       this.timer = null;
     },
   },
-  template: `<div :class="{'dropdown': true, 'active': show}" @mouseover="checkPosition">
+  template: `<div :class="{'dropdown': true, 'active': show || force}" @mouseover="checkPosition">
     <slot></slot>
     <div class="dropdown-offset" ref="offset">
       <div class="dropdown-content" ref="content">

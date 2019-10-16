@@ -112,12 +112,7 @@ const applicationTopVersion = new Vue({
           </template>
         </dropdown>
         <div class="menu-static">
-          <div class="rj-input">
-            <input type="text" placeholder="Search...">
-            <div class="rj-input-i">
-              <i class="material-icons">search</i>
-            </div>
-          </div>
+          <search @hide="onHideChild" @show="onShowChild" class="dropdown-bottom-left"/>
         </div>
       </div>
     </div>

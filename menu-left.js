@@ -112,12 +112,7 @@ const applicationLeftVersion = new Vue({
           </div>
         </div>
         <div class="menu-static" style="padding-left: 5px; padding-right: 5px;">
-          <div class="rj-input">
-            <input type="text" placeholder="Search...">
-            <div class="rj-input-i">
-              <i class="material-icons">search</i>
-            </div>
-          </div>
+          <search @hide="onHideChild" @show="onShowChild" class="dropdown-right"/>
         </div>
         <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-right">
           Menu 3

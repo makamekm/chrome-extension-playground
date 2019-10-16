@@ -340,6 +340,14 @@ body {
   overflow-x: hidden;
 }
 
+.list-header {
+  padding: 5px 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  background-color: rgba(18, 60, 109, 1);
+  color: #fff;
+}
+
 .list-item {
   padding: 5px 10px;
   white-space: nowrap;
@@ -349,11 +357,13 @@ body {
   transition: all 0.15s;
 }
 
+.list-header:last-child,
 .list-item:last-child {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 
+.list-header:first-child,
 .list-item:first-child {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -500,7 +510,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 80vh;
+  max-height: 90vh;
   min-width: max-content;
   width: max-content;
   max-width: max-content;
@@ -511,7 +521,6 @@ body {
 }
 
 .item-list > * {
-  /* flex: 1 1 200px; */
   min-width: 200px;
 }
 

@@ -25,6 +25,7 @@
       "is-near.util.js",
       "items.js",
       "dropdown.js",
+      "search.js",
       "menu-items.js",
       "menu-left-panel.js",
       "menu-left.js",
