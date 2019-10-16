@@ -46,7 +46,6 @@ const applicationLeftVersion = new Vue({
         this.selectedIndex = null;
         this.selectedElement = null;
         this.selectedItem = null;
-        // setSelectedPanel(null, null);
       }
     },
   },
