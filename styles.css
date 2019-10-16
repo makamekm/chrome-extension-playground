@@ -490,16 +490,17 @@ body {
 
 
 
+.item-list-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 80vw;
+}
 
 .item-list {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* overflow-y: hidden;
-  overflow-x: auto; */
-  /* align-items: center;
-  justify-content: start; */
-  max-height: 250px;
+  max-height: 80vh;
   min-width: max-content;
   width: max-content;
   max-width: max-content;
@@ -507,7 +508,6 @@ body {
   padding-bottom: 2px;
   box-sizing: border-box;
   min-width: max-content;
-  /* min-height: 100%; */
 }
 
 .item-list > * {
