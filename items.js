@@ -4,7 +4,7 @@ function getItems() {
       label: 'dgdgf',
       children: [
         {
-          label: 'dgdgf',
+          label: 'fdfdfdfdfdfdf',
           children: [
             {
               label: 'dgdgf',
@@ -71,10 +71,10 @@ function getIndex(index, subIndex) {
   return -1;
 };
 
-function getFlatItems() {
-  return getItems().reduce((acc, topItem, index) => {
-    topItem.children.forEach((item, subIndex) => {
-      acc = acc.concat(item.children);
+function getFlatItems(items) {
+  return items.reduce((acc, topItem) => {
+    topItem.children.forEach((item) => {
+      acc.push(item);
     });
     return acc;
   }, []);

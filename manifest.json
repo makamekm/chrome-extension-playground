@@ -19,7 +19,7 @@
   ],
   "content_scripts": [{
     "css": ["styles.css"],
-    "js": ["vue.js", "is-near.util.js", "items.js", "dropdown.js", "menu-left.js", "menu-top.js", "panel.js"],
+    "js": ["vue.js", "init.js", "is-near.util.js", "items.js", "dropdown.js", "menu-left-panel.js", "menu-left.js", "menu-top.js"],
     "matches": ["*://*/**"]
   }],
   "version": "4.4.0",

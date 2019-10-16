@@ -1,24 +1,11 @@
-const containerLeftPanel = document.createElement("div"); 
-document.body.appendChild(containerLeftPanel);
-
-let setSelectedPanel;
-
-const Panel = new Vue({
-  el: containerLeftPanel,
-  data: () => ({
-    items: getFlatItems(),
-    selectedElement: null,
-    selectedIndex: null,
-  }),
+const MenuLeftPanel = Vue.component('menu-left-panel', {
+  props: ['selectedElement', 'selectedIndex', 'items'],
   watch: {
     selectedElement() {
       this.checkPosition();
     },
   },
   mounted() {
-    setSelectedPanel = (element, index) => {
-      this.setSelected(element, index);
-    },
     window.addEventListener("resize", this.checkPosition);
   },
   destroyed() {
@@ -28,12 +15,13 @@ const Panel = new Vue({
     setSelected(element, index) {
       this.selectedElement = element;
       this.selectedIndex = index;
+      this.checkPosition();
     },
     checkPosition() {
       if (this.selectedElement && this.$refs.items[this.selectedIndex]) {
         const elem = this.$refs.items[this.selectedIndex];
         const top = this.selectedElement.getBoundingClientRect().top;
-        const height = elem.getBoundingClientRect().bottom;
+        const height = elem.getBoundingClientRect().height;
         const diffBottomY = Math.floor(top + height - window.innerHeight + 5);
         let diffY = top;
         if (diffBottomY > 0) {
@@ -47,21 +35,28 @@ const Panel = new Vue({
       }
     },
     onEnter(event) {
-      blockPanel(event.currentTarget);
+      this.$emit('show', this.$el);
+      // blockPanel(event.currentTarget);
     },
     onLeave(event) {
-      unblockPanel(event.currentTarget);
+      this.$emit('hide', this.$el);
+      // unblockPanel(event.currentTarget);
     },
   },
   template: `<div :class="{'panel': true, 'active': !!selectedElement}" ref="offset">
     <div
       v-for="(item, index) in items"
-      :class="{'panel-content': true, 'active': selectedIndex === index}"
+      :class="{'panel-content list-scroll': true, 'active': selectedIndex === index}"
       :key="index"
       @mouseenter="onEnter"
       @mouseleave="onLeave"
       ref="items">
-        Hello {{item}}
+        <div
+          v-for="(child, k) in item.children"
+          :key="k"
+          class="list-item">
+          {{child.label}}
+        </div>
     </div>
   </div>`,
 })

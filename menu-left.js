@@ -1,7 +1,5 @@
 const containerLeftVersion = document.createElement("div"); 
 document.body.appendChild(containerLeftVersion);
-let blockPanel;
-let unblockPanel;
 const applicationLeftVersion = new Vue({
   el: containerLeftVersion,
   mounted() {
@@ -9,25 +7,15 @@ const applicationLeftVersion = new Vue({
       this.toggleRJMenu(show);
     };
     document.addEventListener("mousemove", this.menuHoverWatcher);
-    blockPanel = ($el) => {
-      if (!this.blockedDict[$el]) {
-        this.blockedDict[$el] = true;
-        this.blocked++;
-      }
-    };
-    unblockPanel = ($el) => {
-      if (this.blockedDict[$el]) {
-        delete this.blockedDict[$el];
-        this.blocked--;
-      }
-    };
   },
   methods: {
     getIndex(index, subIndex) {
       return getIndex(index, subIndex);
     },
-    onSelect(event, index) {
-      setSelectedPanel(event.currentTarget, index);
+    onSelect(event, index, subIndex, item) {
+      this.selectedIndex = getIndex(index, subIndex);
+      this.selectedElement = event.currentTarget;
+      this.selectedItem = item;
     },
     toggleRJMenu() {
       this.near = !this.near;
@@ -55,7 +43,10 @@ const applicationLeftVersion = new Vue({
   watch: {
     show(value) {
       if (!value) {
-        setSelectedPanel(null, null);
+        this.selectedIndex = null;
+        this.selectedElement = null;
+        this.selectedItem = null;
+        // setSelectedPanel(null, null);
       }
     },
   },
@@ -63,15 +54,26 @@ const applicationLeftVersion = new Vue({
     show() {
       return this.near || this.blocked;
     },
+    flatItems() {
+      return getFlatItems(this.items);
+    },
   },
   data: () => ({
     items: getItems(),
     near: false,
     blocked: 0,
     blockedDict: {},
+    selectedElement: null,
+    selectedIndex: null,
+    selectedItem: null,
   }),
   template: `
     <div :class="{'menu-backdrop left': true, 'active': show}">
+      <menu-left-panel
+        @hide="onHideChild" @show="onShowChild"
+        :items="flatItems"
+        :selectedElement="selectedElement"
+        :selectedIndex="selectedIndex"/>
       <div class="menu" ref="menu">
         <div class="menu-header">
           <div>
@@ -85,17 +87,30 @@ const applicationLeftVersion = new Vue({
             <div class="menu-head-item">
               {{topItem.label}}
             </div>
-            <div class="menu-item"
+            <div :class="{'menu-item': true, 'hover': selectedItem === item}"
               v-for="(item, subIndex) in topItem.children"
-              @mouseover="onSelect($event, getIndex(index, subIndex))"
+              @mouseover="onSelect($event, index, subIndex, item)"
               :key="subIndex">
               {{item.label}}
             </div>
           </div>
         </div>
         <div class="menu-gap"></div>
-        <div class="menu-item">
-          Item Click 3
+        <div class="menu-static">
+          <div class="row">
+            <div class="i-btn">
+              <i class="material-icons">home_work</i>
+            </div>
+            <div class="i-btn">
+              <i class="material-icons">notifications</i>
+              <div class="badge">
+                5
+              </div>
+            </div>
+            <div class="i-btn">
+              <i class="material-icons">settings_applications</i>
+            </div>
+          </div>
         </div>
         <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-right">
           Menu 3
