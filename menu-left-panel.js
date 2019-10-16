@@ -34,13 +34,11 @@ const MenuLeftPanel = Vue.component('menu-left-panel', {
         elem.style.transform = `translateY(${diffY}px)`;
       }
     },
-    onEnter(event) {
+    onEnter() {
       this.$emit('show', this.$el);
-      // blockPanel(event.currentTarget);
     },
-    onLeave(event) {
+    onLeave() {
       this.$emit('hide', this.$el);
-      // unblockPanel(event.currentTarget);
     },
   },
   template: `<div :class="{'panel': true, 'active': !!selectedElement}" ref="offset">

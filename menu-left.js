@@ -112,7 +112,7 @@ const applicationLeftVersion = new Vue({
             </div>
           </div>
         </div>
-        <div class="menu-static">
+        <div class="menu-static" style="padding-left: 5px; padding-right: 5px;">
           <div class="rj-input">
             <input type="text" placeholder="Search...">
             <div class="rj-input-i">

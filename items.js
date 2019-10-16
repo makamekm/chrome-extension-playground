@@ -12,6 +12,18 @@ function getItems() {
             {
               label: 'rewrwer',
             },
+            {
+              label: 'fdf',
+            },
+            {
+              label: 'rewrwer',
+            },
+            {
+              label: 'fgfdg',
+            },
+            {
+              label: 'rewrwer',
+            },
           ],
         },
         {
@@ -19,6 +31,20 @@ function getItems() {
           children: [
             {
               label: 'dgdgf',
+            },
+            {
+              label: 'rewrwer',
+            },
+          ],
+        },
+        {
+          label: 'dgdgf',
+          children: [
+            {
+              label: 'dgdgf',
+            },
+            {
+              label: 'rewrwer',
             },
             {
               label: 'rewrwer',

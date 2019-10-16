@@ -79,7 +79,7 @@ const Dropdown = Vue.component('dropdown', {
     },
     onLeave() {
       this.stopTimer();
-      this.timer = setTimeout(this.onHide, 500);
+      this.timer = setTimeout(this.onHide, 200);
     },
     stopTimer() {
       if (this.timer) {

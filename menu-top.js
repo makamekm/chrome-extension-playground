@@ -38,6 +38,7 @@ const applicationTopVersion = new Vue({
     },
   },
   data: () => ({
+    items: getItems(),
     near: false,
     blocked: 0,
     blockedDict: {},
@@ -50,76 +51,17 @@ const applicationTopVersion = new Vue({
             RJ Access Menu
           </div>
         </div>
-        <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item">
-          Menu 1
+        <dropdown
+          v-for="(topItem, index) in items"
+          :key="index"
+          @hide="onHideChild"
+          @show="onShowChild"
+          class="menu-item">
+          {{topItem.label}}
           <template #content>
-            <div class="item">
-              Test 1
-            </div>
-            <div class="item">
-              Test 2
-            </div>
-            <dropdown class="item dropdown-right">
-              <div class="row-left-right">
-                <div>
-                  Test Menu 1
-                </div>
-                <div>
-                  >
-                </div>
-              </div>
-              <template #content>
-                <div class="item">
-                  Test 1
-                </div>
-                <div class="item">
-                  Test 2
-                </div>
-                <dropdown class="item dropdown-right">
-                  <div class="row-left-right">
-                    <div>
-                      Test Menu 2
-                    </div>
-                    <div>
-                      >
-                    </div>
-                  </div>
-                  <template #content>
-                    <div class="item">
-                      Test 1
-                    </div>
-                    <div class="item">
-                      Test 2
-                    </div>
-                    <div class="item">
-                      Test 3
-                    </div>
-                  </template>
-                </dropdown>
-              </template>
-            </dropdown>
+            <menu-items :items="topItem.children"/>
           </template>
         </dropdown>
-        <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item">
-          Menu 2
-          <template #content>
-            <div class="item">
-              Test 1
-            </div>
-            <div class="item">
-              Test 2
-            </div>
-            <div class="item">
-              Test 3
-            </div>
-          </template>
-        </dropdown>
-        <div class="menu-item">
-          Item Click 1
-        </div>
-        <div class="menu-item">
-          Item Click 2
-        </div>
         <div class="menu-gap"></div>
         <div class="menu-static">
           <div class="row row-padding">
