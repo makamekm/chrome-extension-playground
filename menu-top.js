@@ -121,8 +121,21 @@ const applicationTopVersion = new Vue({
           Item Click 2
         </div>
         <div class="menu-gap"></div>
-        <div class="menu-item">
-          Item Click 3
+        <div class="menu-static">
+          <div class="row row-padding">
+            <div class="i-btn">
+              <i class="material-icons">home_work</i>
+            </div>
+            <div class="i-btn">
+              <i class="material-icons">notifications</i>
+              <div class="badge">
+                5
+              </div>
+            </div>
+            <div class="i-btn">
+              <i class="material-icons">settings_applications</i>
+            </div>
+          </div>
         </div>
         <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-bottom-left">
           Menu 3
@@ -156,6 +169,14 @@ const applicationTopVersion = new Vue({
             </dropdown>
           </template>
         </dropdown>
+        <div class="menu-static">
+          <div class="rj-input">
+            <input type="text" placeholder="Search...">
+            <div class="rj-input-i">
+              <i class="material-icons">search</i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   `,

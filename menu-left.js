@@ -112,6 +112,14 @@ const applicationLeftVersion = new Vue({
             </div>
           </div>
         </div>
+        <div class="menu-static">
+          <div class="rj-input">
+            <input type="text" placeholder="Search...">
+            <div class="rj-input-i">
+              <i class="material-icons">search</i>
+            </div>
+          </div>
+        </div>
         <dropdown @hide="onHideChild" @show="onShowChild" class="menu-item dropdown-right">
           Menu 3
           <template #content>
